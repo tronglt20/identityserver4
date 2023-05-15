@@ -2,13 +2,21 @@ using IdentityServer.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var services = builder.Services;
+
+services.AddControllersWithViews();
+
 // Add IdentityServer4
-builder.Services.AddIdentityServer4(builder.Configuration);
+services.AddIdentityServer4(builder.Configuration);
 
 var app = builder.Build();
-
+app.UseStaticFiles();
+app.UseRouting();
 app.UseIdentityServer();
 
-app.MapGet("/", () => "Hello World!");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapDefaultControllerRoute();
+});
 
 app.Run();
