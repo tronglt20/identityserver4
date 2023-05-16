@@ -5,7 +5,11 @@ namespace Movies.Client.Services
 {
     public class MovieService
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        public MovieService()
+        {
+
+        }
+        /*private readonly IHttpClientFactory _httpClientFactory;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         public MovieService(IHttpClientFactory httpClientFactory
@@ -13,10 +17,10 @@ namespace Movies.Client.Services
         {
             _httpClientFactory = httpClientFactory;
             _httpContextAccessor = httpContextAccessor;
-        }
+        }*/
         public async Task<IEnumerable<Movie>> GetMoviesAsync()
         {
-            var httpClient = _httpClientFactory.CreateClient("MovieAPIClient");
+            /*var httpClient = _httpClientFactory.CreateClient("MovieAPIClient");
 
             var request = new HttpRequestMessage(
                 HttpMethod.Get,
@@ -29,8 +33,9 @@ namespace Movies.Client.Services
 
             var content = await response.Content.ReadAsStringAsync();
             var movieList = JsonConvert.DeserializeObject<List<Movie>>(content);
-            return movieList;
+            return movieList;*/
 
+            return new List<Movie>();
         }
     }
 }
